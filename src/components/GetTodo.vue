@@ -3,7 +3,8 @@
     <input type="text"
            class="form-control"
            @change="getTodo"
-           placeholder="I need to do...">
+           placeholder="I need to do..."
+           v-model="input">
     <button class="btn btn-primary"
             @click="addTodo">
       Add
@@ -13,6 +14,11 @@
 
 <script>
 export default {
+  data () {
+    return {
+      input: ''
+    }
+  },
   computed: {
     newTodo () {
       return this.$store.getters.newTodo
@@ -25,6 +31,7 @@ export default {
     addTodo () {
       this.$store.dispatch('addTodo')
       this.$store.dispatch('clearTodo')
+      this.input = null
     }
   }
 }
