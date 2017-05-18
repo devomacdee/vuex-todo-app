@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="get-todo" class="container">
+  <div id="get-todo">
     <input type="text"
            class="form-control"
            @change="getTodo"
@@ -13,6 +13,11 @@
 
 <script>
 export default {
+  computed: {
+    newTodo () {
+      return this.$store.getters.newTodo
+    }
+  },
   methods: {
     getTodo (e) {
       this.$store.dispatch('getTodo', e.target.value)
